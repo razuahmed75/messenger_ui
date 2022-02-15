@@ -27,6 +27,78 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List ImageUrl = [
+    "assets/images/add.png",
+    "assets/images/1.jpg",
+    "assets/images/2.jpg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/5.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+    "assets/images/9.jpg",
+    "assets/images/10.jpg",
+    "assets/images/11.jpg",
+    "assets/images/12.jpg",
+  ];
+  List ImgUrl = [
+    "assets/images/1.jpg",
+    "assets/images/2.jpg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/5.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+    "assets/images/9.jpg",
+    "assets/images/10.jpg",
+    "assets/images/11.jpg",
+    "assets/images/12.jpg",
+  ];
+  List NameList = [
+    "Add",
+    "Oliver",
+    "Mashrafee",
+    "Harry",
+    "Jacob",
+    "Charlie",
+    "Thomas",
+    "George",
+    "Oscar",
+    "James",
+    "William",
+    "Elon",
+    "Gates",
+  ];
+  List NameLists = [
+    "Oliver",
+    "Mashrafee",
+    "Harry",
+    "Jacob",
+    "Charlie",
+    "Thomas",
+    "George",
+    "Oscar",
+    "James",
+    "William",
+    "Elon",
+    "Gates",
+  ];
+  List SubTitleList = [
+    "Realy? That's great We will do it tomorrow.",
+    "I just don't understand what the message can be.",
+    "Your thoughts are your message to the world. Just as the rays are the messages of the Sun.",
+    "The absence of a message sometimes is a presence of one.",
+    "Honestly, if everyone likes what you say something is wrong with your message.",
+    "By reading this message you are denying its existence and implying consent.",
+    "In soul of every newborn baby words are waiting to be written.",
+    "Or maybe that’s what it’s all about: this religion’s substance is its lack of substance.",
+    "In McLuhanesque terms, the medium is the message. Some people might find that cool.",
+    "In other words, the package itself is the contents. Is that it?",
+    "Send message to the future by writing it today!",
+    "Hey, look, even I read a book now and then,” Ayumi protested.",
+  ];
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -82,11 +154,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // Middle Section -----------------------------------------
+
             Container(
               height: MediaQuery.of(context).size.height * 0.17,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 50,
+                  itemCount: ImageUrl.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -101,12 +174,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                             child: CircleAvatar(
                               radius: 30,
-                              backgroundImage:
-                                  AssetImage("assets/images/gates4.jpg"),
+                              backgroundImage: AssetImage(ImageUrl[index]),
                             ),
                           ),
                           Text(
-                            "Gates",
+                            "${NameList[index]}",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -120,6 +192,7 @@ class _HomePageState extends State<HomePage> {
             ),
             // Bottom Section-----------------------------------------
             Container(
+              padding: EdgeInsets.only(top: 12),
               width: MediaQuery.of(context).size.width * 1.0,
               height: MediaQuery.of(context).size.height * 1.0,
               decoration: BoxDecoration(
@@ -127,10 +200,10 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
               ),
               child: ListView.builder(
-                itemCount: 50,
-                itemBuilder: ((context, index) {
+                itemCount: 12,
+                itemBuilder: ((context, int n) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    padding: const EdgeInsets.all(8.0),
                     child: ListTile(
                       onTap: () {},
                       leading: Container(
@@ -141,18 +214,17 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: CircleAvatar(
                           radius: 30,
-                          backgroundImage:
-                              AssetImage("assets/images/elonMusk.jpg"),
+                          backgroundImage: AssetImage(ImgUrl[n]),
                         ),
                       ),
                       title: Text(
-                        "Elon Musk",
+                        "${NameLists[n]}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
-                        "Realy? That's great We will do it tomorrow.",
+                        "${SubTitleList[n]}",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
