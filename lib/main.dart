@@ -107,8 +107,8 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 8, 114, 200),
-        // Header Section ---------------------------------------
-        body: ListView(
+        // Header Section --------------------------------------
+        body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(12),
@@ -142,122 +142,133 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                "Favourite Contact",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: "Arial",
-                ),
-              ),
-            ),
-            // Middle Section -----------------------------------------
-
-            Container(
-              height: MediaQuery.of(context).size.height * 0.17,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: ImageUrl.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(42, 53, 52, 56),
-                              shape: BoxShape.circle,
-                            ),
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(ImageUrl[index]),
-                            ),
-                          ),
-                          Text(
-                            "${NameList[index]}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontFamily: "Arial",
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-            ),
-            // Bottom Section-----------------------------------------
-            Container(
-              padding: EdgeInsets.only(top: 12),
-              width: MediaQuery.of(context).size.width * 1.0,
-              height: MediaQuery.of(context).size.height * 1.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
-              ),
-              child: ListView.builder(
-                itemCount: 12,
-                itemBuilder: ((context, int n) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListTile(
-                      onTap: () {},
-                      leading: Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(42, 53, 52, 56),
-                          shape: BoxShape.circle,
-                        ),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: AssetImage(ImgUrl[n]),
-                        ),
-                      ),
-                      title: Text(
-                        "${NameLists[n]}",
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text(
+                        "Favourite Contact",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: "Arial",
                         ),
-                      ),
-                      subtitle: Text(
-                        "${SubTitleList[n]}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "2.30pm",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 20,
-                            height: 20,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 8, 114, 200),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "2",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
-                  );
-                }),
+                    // Middle Section -----------------------------------------
+
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.17,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: ImageUrl.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(42, 53, 52, 56),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage:
+                                          AssetImage(ImageUrl[index]),
+                                    ),
+                                  ),
+                                  Text(
+                                    "${NameList[index]}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontFamily: "Arial",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                    ),
+                    // Bottom Section-----------------------------------------
+                    Container(
+                      padding: EdgeInsets.only(top: 12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(35)),
+                      ),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 12,
+                        itemBuilder: ((context, int n) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              onTap: () {},
+                              leading: Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(42, 53, 52, 56),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage(ImgUrl[n]),
+                                ),
+                              ),
+                              title: Text(
+                                "${NameLists[n]}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Text(
+                                "${SubTitleList[n]}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              trailing: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    "2.30pm",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 20,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 8, 114, 200),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
